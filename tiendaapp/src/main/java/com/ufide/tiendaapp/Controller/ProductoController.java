@@ -40,7 +40,7 @@ public class ProductoController {
         return "productos";
     }
 
-    @GetMapping("/baja-stock")
+    @GetMapping("/bajo-stock")
     public String BajaStock(Model model) {
         model.addAttribute("productos", productoService.findByStockLessThan());
         model.addAttribute("filtro", "Productos con bajo stock");

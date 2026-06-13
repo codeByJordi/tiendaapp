@@ -5,31 +5,7 @@
     <title>Tienda</title>
 </head>
 <body>
-    <div class="row g-3">
-        <div class="col-12 col-md-6 col-lg-4" th:each="p : ${productos}">
-            <div class="card h-100 shadow-sm">
-                <div class="card-body">
-                    <h5 th:text="${p.nombre}">Nombre</h5>
-                    <p class="text-muted small" th:text="${p.descripcion}">desc</p>
-                    <span>$<span
-                            th:text="${#numbers.formatDecimal(p.precio,1,2)}">0</span></span>
-                    <a th:href="@{/productos/{id}(id=${p.id})}" class="btn btn-outlineprimary btn-sm">Ver</a>
-                </div>
-            </div>
-        </div>
-    </div>
-    <nav><ol class="breadcrumb">
-        <li class="breadcrumb-item"><a href="/productos">Productos</a></li>
-        <li class="breadcrumb-item active" th:text="${producto?.nombre} ?: 'No encontrado'">x</li>
-    </ol></nav>
-    <div th:if="${producto != null}">
-        <h2 th:text="${producto.nombre}">Nombre</h2>
-        <p th:text="${producto.descripcion}">desc</p>
-    </div>
-    <div th:if="${producto == null}" class="alert alert-warning">
-        Producto no encontrado.
-    </div>
-
+<div th:replace="~{fragments/header :: navbar}"></div>
 
 </body>
 </html>

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <div class="row g-3">
+        <div class="col-12 col-md-6 col-lg-4" th:each="p : ${productos}">
+            <div class="card h-100 shadow-sm">
+                <div class="card-body">
+                    <h5 th:text="${p.nombre}">Nombre</h5>
+                    <p class="text-muted small" th:text="${p.descripcion}">desc</p>
+                    <span>$<span
+                            th:text="${#numbers.formatDecimal(p.precio,1,2)}">0</span></span>
+                    <a th:href="@{/productos/{id}(id=${p.id})}" class="btn btn-outlineprimary btn-sm">Ver</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
