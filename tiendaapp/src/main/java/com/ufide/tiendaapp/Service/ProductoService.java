@@ -7,6 +7,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class ProductoService {
@@ -15,11 +16,13 @@ public class ProductoService {
     private ProductoRepository repo;
 
     public Producto save(Producto p){
+        if(p.getPrecio() < 0) throw new IllegalArgumentException("Precio negativo");
+        if(p.getStock() <= 0) throw new IllegalArgumentException("Stock no puede ser 0");
         return repo.save(p);
     }
-    public Producto findById(long id){
-        return repo.findById(id).get();
-    }
+    public Optional<Producto> findById(long id){
+        return repo.findById(id);
+    } //optional nos permite poner .if else
     public List<Producto> findAll(){
         return repo.findAll();
     }
@@ -32,7 +35,7 @@ public class ProductoService {
     public List<Producto> findByCategoria(String categoria){
         return repo.findByCategoria(categoria);
     }
-    public List<Producto> findByStockLessThan(int max){
-        return repo.findbyStockLessThan(max);
+    public List<Producto> findByStockLessThan(){
+        return repo.findbyStockLessThan(5);
     }
 }
