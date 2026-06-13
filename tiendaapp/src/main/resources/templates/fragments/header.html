@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<body>
+    <nav th:fragment="navbar" class="navbar navbar-expand-lg navbar-dark brand-bg px-4
+shadow-sm">
+        <a class="navbar-brand fw-bold" href="/?nombre=Estudiante">
+            <i class="bi bi-shop me-2"></i>TiendaApp
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bstarget="#navMenu">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navMenu">
+            <ul class="navbar-nav me-auto">
+                <li class="nav-item"><a class="nav-link" href="/?
+                nombre=Estudiante">Inicio</a></li>
+                <li class="nav-item"><a class="nav-link"
+                                        href="/productos">Productos</a></li>
+                <li class="nav-item"><a class="nav-link" href="/productos/bajostock">Bajo Stock</a></li>
+            </ul>
+            <!---Se hace un form para el buscador--->
+            <form class="d-flex" action="/productos" method="get">
+                <input class="form-control me-2" type="search" name="search"
+                       placeholder="Buscar...">
+            </form>
+        </div>
+    </nav>
+
+    <footer th:fragment="footer" class="footer-curso">
+        <p>SC-403 - Desarrollo de Aplicaciones Web y Patrones</p>
+    </footer>
+</body>
+</html>
