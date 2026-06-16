@@ -1,7 +1,5 @@
 package com.ufide.tiendaapp.Controller;
 
-import com.ufide.tiendaapp.Entity.Producto;
-import com.ufide.tiendaapp.Service.ProductoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -9,6 +7,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+
+import com.ufide.tiendaapp.Service.ProductoService;
 
 @Controller
 @RequestMapping("/productos")
@@ -37,7 +37,7 @@ public class ProductoController {
     @GetMapping("/{id}") //extraemos el id del producto, esto en el detalle de producto
     public String detalle(@PathVariable Long id, Model model) {
         model.addAttribute("producto", productoService.findById(id).orElse(null)); //si no lo encuentra o muestra, poner null
-        return "productos";
+        return "producto";
     }
 
     @GetMapping("/bajo-stock")

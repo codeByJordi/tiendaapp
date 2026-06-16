@@ -36,6 +36,6 @@ public class ProductoService {
         return repo.findByCategoria(categoria);
     }
     public List<Producto> findByStockLessThan(){
-        return repo.findbyStockLessThan(5);
+        return repo.findByStockLessThan(5);
     }
 }
